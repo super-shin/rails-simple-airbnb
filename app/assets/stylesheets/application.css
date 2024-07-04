@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+.card-footer a {
+  text-decoration: none;
+}

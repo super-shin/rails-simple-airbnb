@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="m-2">
+      <h1>All our Flats (<%= Flat.count %>)</h1>
+      <div class="flats_card row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        <% @flats.each do |flat| %>
+          <div class="col mb-4">
+            <div class="card" style="width: 18rem;">
+              <%= image_tag 'picture.jpg', class: 'card-img-top', alt: 'airbnb_picture' %>
+              <div class="card-body bg-light">
+                <h5 class="card-title"><%= flat.name %></h5>
+                <p class="card-text"><%= flat.address %></p>
+                <div class="d-flex justify-content-start align-items-center">
+                  <div class="d-flex align-items-center me-3">
+                    <i class="fa-solid fa-user-group me-2"></i>
+                    <span><%= flat.number_of_guests %></span>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <i class="fa-solid fa-dollar-sign me-2"></i>
+                    <span><%= flat.price_per_night %></span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer bg-white">
+                <%= link_to 'More info', flat_path(flat), class: 'btn btn-outline-primary border-0' %>
+                <%= link_to 'Edit', edit_flat_path(flat), class: 'btn btn-outline-warning border-0' %>
+                <%= link_to 'Remove', flat_path(flat), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-outline-danger border-0' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
